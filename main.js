@@ -57,14 +57,16 @@ const isObstacle = coords => map[coords[0]][coords[1]] === obstacle;
 const getPath = (startPos, endPos) => {
     path = [];
 
-    // Y AXIS MOVEMENT
+    // X AXIS MOVEMENT
     if(startPos[0] > endPos[0]) {
         for(let i = startPos[0]; i >= endPos[0]; i--) {
 
             // if there is an obstacle then find another way
             if(isObstacle([i, startPos[1]])) {
                 map[i][startPos[1]] = errorIco;
-            } else {
+            } 
+
+            else {
                 push(path, [i, startPos[1]])
             }
         }
@@ -80,7 +82,7 @@ const getPath = (startPos, endPos) => {
         }
     }
 
-    // X AXIS MOVEMENT
+    // Y AXIS MOVEMENT
     if(startPos[1] > endPos[1]) {
         for(let i = startPos[1]; i >= endPos[1]; i--) {
 
