@@ -1,3 +1,5 @@
+const init = (mapSizeMin, mapSizeMax, obstacleRate) => {
+
 // Pets and obstacles list
 const obstacleList = ['🪨', '🌋', '🛖', '🏠', '🌳', '🌴'];
 const pathIcoList = ['🐕', '🐈', '🐅', '🐎', '🦌', '🐄', '🐪', '🦣', '🐿️', '🦫', '🦔', '🦇', '🦘', '🦃', '🦆', '🦆', '🐊', '🐢', '🦖', '🦈', '🐋', '🐛', '🐞', '🕷️', '🐌'];
@@ -12,7 +14,7 @@ const errorIco = "❌";
 const pawPrint = "🐾";
 
 // Random map size
-const mapSize = aleatoire(10, 20);
+const mapSize = aleatoire(mapSizeMin, mapSizeMax);
 
 // Random starting and ending coords
 const startPos = [aleatoire(0, mapSize - 1), aleatoire(0, mapSize - 1)];
@@ -112,20 +114,20 @@ const displayPath = path => {
     map[path[taille(path) - 1][0]][path[taille(path) - 1][1]] = pathIco;
 }
 
-// INIT
-const init = () => {
-    const getInfo = [
-        ["Start", "End", "Map Size", "Distance"],
-        [`<b>${startPos[0] + 1}:${startPos[1] + 1}</b>`, 
-        `<b>${endPos[0] + 1}:${endPos[1] + 1}</b>`, 
-        `<b>${mapSize}</b>`, 
-        `<b>${taille(getPath(startPos, endPos)) - 1}</b>`]
-    ];
-    
-    afficher(getInfo);
-    generateRandomObstacle(25);
-    displayPath(getPath(startPos, endPos));
-    afficher(map);
+// Get main informations (mapsize, starting point, ending point and distance from A to B)
+const getInfo = [
+    ["Start", "End", "Map Size", "Distance"],
+    [`<b>${startPos[0] + 1}:${startPos[1] + 1}</b>`, 
+    `<b>${endPos[0] + 1}:${endPos[1] + 1}</b>`, 
+    `<b>${mapSize}x${mapSize}</b>`, 
+    `<b>${taille(getPath(startPos, endPos)) - 1}m</b>`]
+];
+
+afficher(getInfo);
+generateRandomObstacle(obstacleRate);
+displayPath(getPath(startPos, endPos));
+afficher(map);
 }
 
-init();
+// Parameters: MapSizeMin, MapSizeMax, ObstacleRate
+init(10, 20, 20);
