@@ -1,7 +1,12 @@
-const obstacle = "🪨";
+const obstacleList = ['🪨', '🌋', '🛖', '🏠', '🌳', '🌴'];
+const pathIcoList = ['🐕', '🐈', '🐅', '🐎', '🦌', '🐄', '🐪', '🦣', '🐿️', '🦫', '🦔', '🦇', '🦘', '🦃', '🦆', '🦆', '🐊', '🐢', '🦖', '🦈', '🐋', '🐛', '🐞', '🕷️', '🐌'];
+
+const obstacle = obstacleList[aleatoire(0, taille(obstacleList) - 1)]
+const pathIco = pathIcoList[aleatoire(0, taille(pathIcoList) - 1)]
+
 const grass = "🌿";
-const pathIco = "🐌";
-const errorIco = "🟥";
+const errorIco = "❌";
+const pawPrint = "🐾";
 
 const startPos = [aleatoire(0, 9), aleatoire(0, 9)];
 const endPos = [aleatoire(0, 9), aleatoire(0, 9)];
@@ -85,15 +90,14 @@ const getPath = (startPos, endPos) => {
 
 const displayPath = path => {
     for(let i = 0; i < taille(path); i++) {
-        map[path[i][0]][path[i][1]] = pathIco;
+        map[path[i][0]][path[i][1]] = pawPrint;
     }
+    map[path[taille(path) - 1][0]][path[taille(path) - 1][1]] = pathIco;
 }
 
 afficher(`Start : <b>${startPos[0] + 1}:${startPos[1] + 1}</b> - End : <b>${endPos[0] + 1}:${endPos[1] + 1}</b>`)
 
-generateRandomObstacle(40);
-
-afficher(map);
+generateRandomObstacle(20);
 
 displayPath(getPath(startPos, endPos));
 
