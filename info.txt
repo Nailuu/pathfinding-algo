@@ -1,0 +1,27 @@
+Ouvrir le fichier "interface.html" dans un navigateur pour exécuter le code et afficher le résultat.
+
+Pour chaque exercice/projet, copiez-collez l'intégralité du répertoire et renommez ce répertoire de manière explicite.
+Seuls les fichiers "main.js" et "library.js" sont à modifier : 
+- le fichier "main.js" doit contenir le code principal, 
+- le fichier "library.js" doit contenir les fonctions/méthodes que vous jugerez utiles (et réutilisables). 
+Le ficher "library.js" peut être copié/collé d'un projet à l'autre (assurez-vous donc qu'il ne génère aucune erreur).
+
+
+Fonctions prédéfinies utilisables :
+
+LIRE :
+lire(msg) : Prend en paramètre le message à afficher. Retourne la valeur saisie par l'utilisateur. La valeur retournée est de type "string".
+syntaxe : let a = lire("Entrez une valeur");
+
+AFFICHER :
+afficher(valeurs) : affiche la (les) valeur(s) passée(s) en paramètre. Les valeurs peuvent être de type : booléen, numérique, chaine de caractères, tableaux
+syntaxe : afficher(texte, tableau, nombre);
+
+TAILLE D'UN TABLEAU
+taille(tableau) : retourne le nombre d'éléments d'un tableau indexé.
+syntaxe : let nb = taille(tableau);
+équivalent à la syntaxe JavaScript : let nb=tableau.length;
+
+NOMBRE ALEATOIRE
+aleatoire(min, max) : retourne un nombre entier aléatoire compris entre "min" et "max" inclus.
+syntaxe : let nb = aleatoire(mini, maxi);

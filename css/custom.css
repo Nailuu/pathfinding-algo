@@ -1,0 +1,14 @@
+#content {margin-bottom: 50px;}
+.table{margin-bottom: 0;}
+td > .table > tbody > tr:first-child {border-top-width: 0;}
+td > .key + .table > tbody > tr:first-child {border-top-width: 1px;border-top-style: dashed;}
+td > .table > tbody > tr:last-child {border-bottom-width: 0;}
+td > .table > tbody > tr > td:first-child {border-left-width: 0;}
+td > .table > tbody > tr > td:last-child {border-right-width: 0;}
+.table>:not(caption)>*>* {padding: 0;}
+div > .table {margin-bottom: 20px;}
+.table tr {vertical-align: middle;}
+.table td > span {display: inline-block;padding: .5rem .5rem;}
+span.key {padding: .1rem !important;font-size: 70%;opacity: .8;font-style: italic;letter-spacing: 2px;}
+div.afficher {opacity: .5;font-size: 80%;}
+div + div.afficher {border-top:  1px solid #efefef;}
