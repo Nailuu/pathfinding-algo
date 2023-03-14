@@ -1,23 +1,28 @@
 const obstacle = "🪨";
 const grass = "🌿";
-
 const pathIco = "🐌";
 
 const startPos = [aleatoire(1, 10), aleatoire(1, 10)];
 const endPos = [aleatoire(1, 10), aleatoire(1, 10)];
 
 const map = [
-    [grass, grass, grass, grass, grass, grass, grass, obstacle, grass, grass],
-    [grass, grass, grass, grass, grass, grass, obstacle, grass, grass, grass],
-    [grass, obstacle, grass, grass, grass, grass, grass, grass, grass, grass],
-    [grass, grass, grass, obstacle, grass, grass, grass, grass, grass, grass],
-    [grass, grass, grass, grass, grass, grass, grass, grass, obstacle, grass],
-    [obstacle, grass, grass, grass, grass, grass, grass, grass, grass, grass],
-    [grass, grass, grass, grass, grass, grass, obstacle, grass, grass, grass],
     [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
-    [grass, grass, grass, obstacle, grass, grass, grass, grass, grass, grass],
-    [grass, grass, grass, grass, grass, obstacle, grass, grass, grass, grass]
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass],
+    [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass]
 ]
+
+const generateRandomObstacle = number => {
+    for(let i = 0; i < number; i++) {
+        map[aleatoire(0, 9)][aleatoire(0, 9)] = obstacle;
+    }
+}
 
 const getPath = (startPos, endPos) => {
     path = [];
@@ -56,5 +61,8 @@ const displayPath = path => {
 
 afficher(`Start : <b>${startPos}</b> - End : <b>${endPos}</b>`)
 
+generateRandomObstacle(15);
+
 displayPath(getPath(startPos, endPos));
+
 afficher(map);
