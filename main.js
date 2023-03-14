@@ -114,7 +114,15 @@ const displayPath = path => {
 
 // INIT
 const init = () => {
-    afficher(`Start : <b>${startPos[0] + 1}:${startPos[1] + 1}</b> - End : <b>${endPos[0] + 1}:${endPos[1] + 1}</b> - Map Size : <b>${mapSize}</b>`);
+    const getInfo = [
+        ["Start", "End", "Map Size", "Distance"],
+        [`<b>${startPos[0] + 1}:${startPos[1] + 1}</b>`, 
+        `<b>${endPos[0] + 1}:${endPos[1] + 1}</b>`, 
+        `<b>${mapSize}</b>`, 
+        `<b>${taille(getPath(startPos, endPos)) - 1}</b>`]
+    ];
+    
+    afficher(getInfo);
     generateRandomObstacle(25);
     displayPath(getPath(startPos, endPos));
     afficher(map);
