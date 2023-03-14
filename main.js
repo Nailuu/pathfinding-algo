@@ -15,8 +15,8 @@ const pawPrint = "🐾";
 const mapSize = aleatoire(10, 20);
 
 // Random starting and ending coords
-const startPos = [aleatoire(0, mapSize), aleatoire(0, mapSize)];
-const endPos = [aleatoire(0, mapSize), aleatoire(0, mapSize)];
+const startPos = [aleatoire(0, mapSize - 1), aleatoire(0, mapSize - 1)];
+const endPos = [aleatoire(0, mapSize - 1), aleatoire(0, mapSize - 1)];
 
 // Generate map (array) depending on size
 const getMap = size => {
@@ -112,12 +112,12 @@ const displayPath = path => {
     map[path[taille(path) - 1][0]][path[taille(path) - 1][1]] = pathIco;
 }
 
-
 // INIT
-afficher(`Start : <b>${startPos[0] + 1}:${startPos[1] + 1}</b> - End : <b>${endPos[0] + 1}:${endPos[1] + 1}</b> - Map Size : <b>${mapSize}</b>`)
+const init = () => {
+    afficher(`Start : <b>${startPos[0] + 1}:${startPos[1] + 1}</b> - End : <b>${endPos[0] + 1}:${endPos[1] + 1}</b> - Map Size : <b>${mapSize}</b>`);
+    generateRandomObstacle(25);
+    displayPath(getPath(startPos, endPos));
+    afficher(map);
+}
 
-generateRandomObstacle(50);
-
-displayPath(getPath(startPos, endPos));
-
-afficher(map);
+init();
