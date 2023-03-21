@@ -69,16 +69,12 @@ const getPath = (startPos, endPos) => {
                     console.log("test1");
                     startPos[1] += 1;
 
-                    // path[taille(path)][1] = startPos[1];
-
                     push(path, [(i + 1), startPos[1]])
                     i++;
                 } 
                 else if(!isObstacle([i, startPos[1] - 1])) {
                     console.log("test2");
                     startPos[1] -= 1;
-
-                    // path[taille(path)][1] = startPos[1];
 
                     push(path, [(i + 1), startPos[1]])
                     i++;
@@ -100,16 +96,12 @@ const getPath = (startPos, endPos) => {
                     console.log("test3");
                     startPos[1] += 1;
 
-                    // path[taille(path)][1] = startPos[1];
-
                     push(path, [(i - 1), startPos[1]])
                     i--;
                 } 
                 else if(!isObstacle([i, startPos[1] - 1])) {
                     console.log("test4");
                     startPos[1] -= 1;
-
-                    // path[taille(path)][1] = startPos[1];
 
                     push(path, [(i - 1), startPos[1]])
                     i--;
@@ -127,16 +119,48 @@ const getPath = (startPos, endPos) => {
             // if there is an obstacle then find another way
             if(isObstacle([endPos[0], i])) {
                 map[endPos[0]][i] = errorIco;
-            } else {
+
+                if(!isObstacle([endPos[0] + 1, i])) {
+                    console.log("test5");
+                    endPos[0] += 1;
+
+                    push(path, [endPos[0], (i + 1)]);
+                    i++;
+                } 
+                else if(!isObstacle([endPos[0] - 1, i])) {
+                    console.log("test6");
+                    endPos[0] -= 1;
+                    
+                    push(path, [endPos[0], (i + 1)]);
+                    i++;
+                }
+            } 
+            else {
                 push(path, [endPos[0], i])
             }
         }
-    } else {
+    }
+    else {
         for(let i = startPos[1]; i <= endPos[1]; i++) {
 
             // if there is an obstacle then find another way
             if(isObstacle([endPos[0], i])) {
                 map[endPos[0]][i] = errorIco;
+
+                if(!isObstacle([endPos[0] + 1, i])) {
+                    console.log("test5");
+                    endPos[0] += 1;
+
+                    push(path, [endPos[0], (i - 1)]);
+                    i--;
+                } 
+                else if(!isObstacle([endPos[0] - 1, i])) {
+                    console.log("test6");
+                    endPos[0] -= 1;
+                    
+                    push(path, [endPos[0], (i - 1)]);
+                    i--;
+                }
             } else {
                 push(path, [endPos[0], i])
             }
